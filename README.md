@@ -4,7 +4,7 @@
 > **The Early OOM freezer Daemon**
 
 
-Heavily inspired by `earlyoom`, **earlyfreeze** opts for a non-destructive strategy. Instead of sending `SIGKILL` to free up memory, it leverages the **Cgroup v2 freezer** to pause execution.
+Heavily inspired by [`earlyoom`](https://github.com/rfjakob/earlyoom), **earlyfreeze** opts for a non-destructive strategy. Instead of sending `SIGKILL` to free up memory, it leverages the **Cgroup v2 freezer** to pause execution.
 
 This allows the kernel to swap out pages calmly, preventing system lockups without sacrificing your running applications or data.
 
