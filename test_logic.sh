@@ -40,7 +40,7 @@ DAEMON_PID=$!
 
 echo "Daemon started (PID $DAEMON_PID). Watching logic..."
 
-# Funzione di pulizia (per non lasciare processi appesi)
+# Cleanup function
 cleanup() {
     echo ""
     echo "--- Cleaning up ---"
