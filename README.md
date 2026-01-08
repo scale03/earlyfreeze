@@ -3,9 +3,10 @@
 ![License](https://img.shields.io/github/license/scale03/earlyfreeze)
 > **The Early OOM freezer Daemon**
 
-**earlyfreeze** is a minimal, zero-dependency C99 daemon that prevents Linux OOM hangs by temporarily **suspending** processes via **cgroup v2 freezer** instead of killing them.
 
-Unlike `earlyoom` or `systemd-oomd` (which use `SIGKILL`), earlyfreeze buys time for the kernel to swap out pages without destroying data or user sessions.
+Heavily inspired by `earlyoom`, **earlyfreeze** opts for a non-destructive strategy. Instead of sending `SIGKILL` to free up memory, it leverages the **Cgroup v2 freezer** to pause execution.
+
+This allows the kernel to swap out pages calmly, preventing system lockups without sacrificing your running applications or data.
 
 ## Quick Start
 
@@ -27,3 +28,13 @@ Options:
   -r, --recover <val>     Thaw PSI % (default: 5.0)
   -i, --interval <ms>     Poll interval (default: 100)
   -d, --dry-run           Log only, do not freeze
+```
+### Requirements
+* Linux Kernel 5.2+
+* Cgroup v2 mounted
+* PSI enabled
+
+**Note for non-systemd users (Alpine, Void, Artix):**
+`earlyfreeze` is init-agnostic. It works on any cgroup v2 directory.
+Just point it to your custom group:
+`./earlyfreeze --target /sys/fs/cgroup/my_custom_group`
