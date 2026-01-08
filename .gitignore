@@ -1,0 +1,9 @@
+earlyfreeze
+earlyfreeze_test
+*.o
+*.log
+.DS_Store
+*.swp
+*~
+.vscode/
+.idea/
