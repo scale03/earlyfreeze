@@ -11,9 +11,9 @@ This allows the kernel to swap out pages calmly, preventing system lockups witho
 ## Quick Start
 
 ```bash
-git clone [https://github.com/scale03/earlyfreeze.git](https://github.com/scale03/earlyfreeze.git)
+git clone https://github.com/scale03/earlyfreeze.git
 make
-sudo ./earlyfreeze --target /sys/fs/cgroup/user.
+sudo ./earlyfreeze --target /sys/fs/cgroup/user.slice
 ```
 
 
