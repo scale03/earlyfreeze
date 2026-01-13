@@ -3,17 +3,17 @@
 ![License](https://img.shields.io/github/license/scale03/earlyfreeze)
 > **The Early OOM freezer Daemon**
 
-## Introduction
-Inspired by [`earlyoom`](https://github.com/rfjakob/earlyoom), **earlyfreeze** opts for a non-destructive strategy. Instead of sending `SIGKILL` to free up memory, it leverages the **Cgroup v2 freezer** to pause execution.
+## Overview
+Linux has a mechanism to handle low memory (the OOM Killer). It kills processes. Sometimes it kills the wrong process. 
+If I have a generic worker running in the background, I don't want it dead. I just want it to freeze while the memory pressure is too high.
 
-This allows the kernel to swap out pages calmly, preventing system lockups without sacrificing your running applications or data.
+**earlyfreeze** is a very simple daemon that brings the concept of "Pause" to your background services using **Cgroups V2 freeze**.
 
 ## Quick Start
 
 ```bash
 git clone https://github.com/scale03/earlyfreeze.git
 make
-sudo ./earlyfreeze --target /sys/fs/cgroup/user.slice
 ```
 
 
