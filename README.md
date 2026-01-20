@@ -1,14 +1,16 @@
 # earlyfreeze
 ![CI](https://github.com/scale03/earlyfreeze/actions/workflows/build.yml/badge.svg)
 ![License](https://img.shields.io/github/license/scale03/earlyfreeze)
-> **The Early OOM freezer Daemon**
+> **Early OOM Cgroups Freezer Daemon**
 
 ## Overview
-Linux has a mechanism to handle low memory (the OOM Killer). It kills processes. Sometimes it kills the wrong process. 
-If I have a generic worker running in the background, I don't want it dead. I just want it to freeze while the memory pressure is too high.
+The Linux OOM Killer is a mechanism of last resort. When memory runs out, the kernel sacrifices a process to save the system. It is effective, but it is destructive. It often kills the wrong process, and for background workers processing long-running jobs, "death" means lost state and wasted compute.
 
-**earlyfreeze** is a very simple daemon that brings the concept of "Pause" to your background services using **Cgroups V2 freeze**.
+**earlyfreeze** proposes a different contract: Suspension.
 
+By monitoring Linux **PSI (Pressure Stall Information)**, earlyfreeze detects memory contention before the kernel panics. When pressure spikes, it uses the **Cgroups V2 freezer controller** to atomically pause non-critical workloads. Once the pressure subsides, they resume exactly where they left off.
+
+It is a very simple daemon designed to keep your workers alive, your system responsive, and the OOM Killer asleep.
 ## Quick Start
 
 ```bash
