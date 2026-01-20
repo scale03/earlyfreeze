@@ -16,5 +16,5 @@ jobs:
     - name: Compile
       run: make
       
-    - name: Run Logic Tests
-      run: chmod +x test_logic.sh && ./test_logic.sh
+    - name: Run Test
+      run: chmod +x test.sh && ./test.sh
