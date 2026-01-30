@@ -1,5 +1,5 @@
 # earlyfreeze
-![CI](https://github.com/scale03/earlyfreeze/actions/workflows/build.yml/badge.svg)
+![Build:](https://github.com/scale03/earlyfreeze/actions/workflows/build.yml/badge.svg)
 ![License](https://img.shields.io/github/license/scale03/earlyfreeze)
 > **Early OOM Cgroups Freezer Daemon**
 
